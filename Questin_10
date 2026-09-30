@@ -1,0 +1,50 @@
+#include <stdio.h>
+int main() {
+    float accuracy, confidence, score, average;
+    int dataset, role, permissions;
+    printf("Enter accuracy: ");
+    scanf("%f", &accuracy);
+    printf("Enter confidence: ");
+    scanf("%f", &confidence);
+    printf("Enter dataset size: ");
+    scanf("%d", &dataset);
+    printf("Enter role (1=Intern, 2=Engineer, 3=Admin): ");
+    scanf("%d", &role);
+    printf("Enter status flags: ");
+    scanf("%d", &permissions);
+    if (dataset / 1000 > 10)
+        score = (accuracy * 0.5) + (confidence * 0.3) + (10 * 2);
+    else
+        score = (accuracy * 0.5) + (confidence * 0.3) + ((dataset / 1000) * 2);
+    printf("\nModel Score: %.2f\n", score);
+    average = (accuracy + confidence) / 2;
+    if (score > average)
+        printf("Score is above average.\n");
+    else
+        printf("Score is not above average.\n");
+    if (permissions & 8)
+        printf("Rejected: model deprecated\n");
+    else if (!(permissions & 1))
+        printf("Rejected: not trained\n");
+    else if (!(permissions & 2))
+        printf("Rejected: not validated\n");
+    else if (!(permissions & 4))
+        printf("Pending: awaiting approval\n");
+    else if (accuracy < 70 || confidence < 60)
+        printf("Rejected: performance too low\n");
+    else if (dataset < 5000)
+        printf("Rejected: dataset too small\n");
+    else if (role == 1)
+        printf("Denied: interns cannot deploy\n");
+    else if (role == 2 && score < 80)
+        printf("Denied: engineer needs higher score\n");
+    else
+        printf("Approved for deployment\n");
+    printf("\nVariable sizes:\n");
+    printf("accuracy = %zu bytes\n", sizeof(accuracy));
+    printf("confidence = %zu bytes\n", sizeof(confidence));
+    printf("dataset = %zu bytes\n", sizeof(dataset));
+    printf("role = %zu bytes\n", sizeof(role));
+    printf("permissions = %zu bytes\n", sizeof(permissions));
+    return 0;
+}
