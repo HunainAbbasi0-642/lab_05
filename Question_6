@@ -1,0 +1,99 @@
+#include <stdio.h>
+int main() {
+    int category, subType;
+    int delayed;
+    printf("Select a category:\n");
+    printf("1. Greeting\n");
+    printf("2. Query\n");
+    printf("3. Complaint\n");
+    printf("4. Feedback\n");
+    printf("Enter your choice: ");
+    scanf("%d", &category);
+    switch (category) {
+        case 1:
+            printf("\nGreeting:\n");
+            printf("1. Morning\n");
+            printf("2. Evening\n");
+            printf("Enter sub-type: ");
+            scanf("%d", &subType);
+            switch (subType) {
+                case 1:
+                    printf("Bot: Good morning! How can I help you?\n");
+                    break;
+                case 2:
+                    printf("Bot: Good evening! How can I help you?\n");
+                    break;
+                default:
+                    printf("Invalid selection.\n");
+            }
+            break;
+        case 2:
+            printf("\nQuery:\n");
+            printf("1. Product\n");
+            printf("2. Billing\n");
+            printf("3. Technical\n");
+            printf("Enter sub-type: ");
+            scanf("%d", &subType);
+            switch (subType) {
+                case 1:
+                    printf("Bot: I can help you with product information.\n");
+                    break;
+                case 2:
+                    printf("Bot: I can help you with your billing query.\n");
+                    break;
+                case 3:
+                    printf("Bot: I can help you with technical support.\n");
+                    break;
+                default:
+                    printf("Invalid selection.\n");
+            }
+            break;
+        case 3:
+            printf("\nComplaint:\n");
+            printf("1. Delivery\n");
+            printf("2. Quality\n");
+            printf("Enter sub-type: ");
+            scanf("%d", &subType);
+            switch (subType) {
+                case 1:
+                    printf("Is the order delayed? (1 = Yes, 0 = No): ");
+                    scanf("%d", &delayed);
+                    if (delayed == 1) {
+                        printf("Bot: We sincerely apologize for the delivery delay. We will resolve it as soon as possible.\n");
+                    }
+                    else if (delayed == 0) {
+                        printf("Bot: We apologize for the delivery issue. We will look into it promptly.\n");
+                    }
+                    else {
+                        printf("Invalid selection.\n");
+                    }
+                    break;
+                case 2:
+                    printf("Bot: We apologize for the quality issue. We will investigate your complaint.\n");
+                    break;
+                default:
+                    printf("Invalid selection.\n");
+            }
+            break;
+        case 4:
+            printf("\nFeedback:\n");
+            printf("1. Positive\n");
+            printf("2. Negative\n");
+            printf("Enter sub-type: ");
+            scanf("%d", &subType);
+            switch (subType) {
+                case 1:
+                    printf("Bot: Thank you for your positive feedback!\n");
+                    break;
+                case 2:
+                    printf("Bot: Thank you for your feedback. We will work to improve our service.\n");
+                    break;
+                default:
+                    printf("Invalid selection.\n");
+            }
+            break;
+        default:
+            printf("Invalid selection.\n");
+    }
+    return 0;
+}
