@@ -1,0 +1,39 @@
+#include <stdio.h>
+int main() {
+    int vehicleType, hours, member;
+    float fee;
+    printf("Enter vehicle type (1=Bike, 2=Car, 3=Truck): ");
+    scanf("%d", &vehicleType);
+    printf("Enter hours parked: ");
+    scanf("%d", &hours);
+    printf("Enter membership status (1=Member, 0=Non-member): ");
+    scanf("%d", &member);
+    if (vehicleType < 1 || vehicleType > 3) {
+        printf("Invalid vehicle.\n");
+    }
+    else if (hours <= 0) {
+        printf("Invalid duration.\n");
+    }
+    else {
+        if (vehicleType == 1) {
+            fee = 20 * hours;
+        }
+        else if (vehicleType == 2) {
+            if (hours <= 2)
+                fee = 50;
+            else
+                fee = 50 + 30 * (hours - 2);
+        }
+        else {
+            if (hours <= 3)
+                fee = 100;
+            else
+                fee = 100 + 50 * (hours - 3);
+        }
+        if (member == 1 && fee > 200) {
+            fee = fee * 0.85;
+        }
+        printf("Final Fee: %.2f\n", fee);
+    }
+    return 0;
+}
